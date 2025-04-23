@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    container_name: fastapi-template
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - API_KEY=supersecretapikey123
