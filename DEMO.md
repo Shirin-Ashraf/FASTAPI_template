@@ -138,7 +138,7 @@ DATABASE_URL=postgresql://user:pass@host/db
 
 ## 2. Update your config.py to use this
 
-# app/core/config.py
+### app/core/config.py
 from pydantic import BaseSettings
 import os
 from dotenv import load_dotenv
@@ -156,7 +156,7 @@ settings = Settings()
 
 ## 3. Use it throughout your app
 
-# app/db/database.py
+### app/db/database.py
 from app.core.config import settings
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
