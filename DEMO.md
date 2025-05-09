@@ -126,12 +126,12 @@ To run your FastAPI app in dev or prod mode, you can use environment variables t
 
 ## 1. Add an ENV variable in your .env file
 
-### .env.dev
+## .env.dev
 
 ENV=dev
 DATABASE_URL=sqlite:///./dev.db
 
-### .env.prod
+## .env.prod
 
 ENV=prod
 DATABASE_URL=postgresql://user:pass@host/db
