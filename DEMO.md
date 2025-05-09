@@ -9,7 +9,7 @@ We are collecting user data (name, email, age) and saving it to a database using
 
 Create a `crud.py` function to handle database interaction:
 
-# app/db/crud.py
+### app/db/crud.py
 
 from sqlalchemy.orm import Session
 from app.db import models
@@ -53,7 +53,7 @@ from pydantic import BaseModel, EmailStr
 
 router = APIRouter()
 
-# Dependency to get DB session
+## Dependency to get DB session
 def get_db():
     db = database.SessionLocal()
     try:
@@ -61,7 +61,7 @@ def get_db():
     finally:
         db.close()
 
-# Input schema
+## Input schema
 class UserInput(BaseModel):
     name: str
     email: EmailStr
@@ -124,26 +124,26 @@ curl -X POST http://127.0.0.1:8000/api/hello \
 
 To run your FastAPI app in dev or prod mode, you can use environment variables to control the environment, e.g. ENV=dev or ENV=prod, and then conditionally load settings (like DB URL, logging level, etc.) accordingly.
 
-1. Add an ENV variable in your .env file
+## 1. Add an ENV variable in your .env file
 
-# .env.dev
+### .env.dev
 
 ENV=dev
 DATABASE_URL=sqlite:///./dev.db
 
-# .env.prod
+### .env.prod
 
 ENV=prod
 DATABASE_URL=postgresql://user:pass@host/db
 
-2. Update your config.py to use this
+## 2. Update your config.py to use this
 
 # app/core/config.py
 from pydantic import BaseSettings
 import os
 from dotenv import load_dotenv
 
-# Load correct .env file based on ENV
+## Load correct .env file based on ENV
 env_type = os.getenv("ENV", "dev")
 dotenv_file = f".env.{env_type}" if env_type != "dev" else ".env"
 load_dotenv(dotenv_file)
@@ -154,7 +154,7 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-3. Use it throughout your app
+## 3. Use it throughout your app
 
 # app/db/database.py
 from app.core.config import settings
@@ -167,13 +167,13 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
-4. Run the app with a specific environment
+## 4. Run the app with a specific environment
 For dev:
 
 ENV=dev uvicorn app.main:app --reload
 
 
-## ✅ Done!
+### ✅ Done!
 
 You've now exposed a full FastAPI endpoint that:
 
