@@ -121,7 +121,7 @@ curl -X POST http://127.0.0.1:8000/api/hello \
 }
  
 
-
+Setting 
 To run your FastAPI app in dev or prod mode, you can use environment variables to control the environment, e.g. ENV=dev or ENV=prod, and then conditionally load settings (like DB URL, logging level, etc.) accordingly.
 
 ## 1. Add an ENV variable in your .env file
