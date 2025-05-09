@@ -2,7 +2,6 @@
 
 A reusable FastAPI project template designed for AI developers to expose their ML/GenAI scripts as APIs — with built-in API key authentication, logging, and Docker support.
 
----
 
 ## Features
 

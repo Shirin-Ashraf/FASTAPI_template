@@ -1,16 +1,30 @@
 # app/main.py
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.v1.endpoints import sample, gen_text
 from app.core.logging_config import setup_logging
+from app.core.config import settings
 import logging
+
 
 setup_logging()
 logger = logging.getLogger(__name__)
 
+# logger.setLevel(settings.LOG_LEVEL)
+# print(f"🛠 Running in {settings.ENV} environment")
+
+
 app = FastAPI(title="FastAPI Template")
 
-# Add CORS config
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse(url="/docs")
+
+
+
+# Add CORS config(example)
 origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
